@@ -217,7 +217,7 @@ func (client *Client) httpRequest(method, url string, body io.Reader) ([]byte, e
 	defer resp.Body.Close()
 
 	if resp.StatusCode < 200 || resp.StatusCode > 299 {
-		log.Println(logPrefix, "status:", resp.StatusCode)
+		log.Println(logPrefix, "status:", resp.StatusCode, "body:", string(resp.Body))
 		return nil, ErrFailure
 	}
 
